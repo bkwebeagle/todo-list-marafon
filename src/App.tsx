@@ -1,26 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {useTypedSelector} from "./hooks/use-type-selector";
+import {todoList} from "./api/todo.functions";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const test = useTypedSelector((state) => state);
+    console.log('test',test);
+    return (
+        <div>ToDo List
+            <button type="button"
+            onClick={() => {todoList.categoryCreate('tessst')}}>Test Category</button>
+            <button type="button"
+            onClick={() => {todoList.taskCreate('tessst', 'test')}}>Test Task</button>
+        </div>
+    );
 }
 
 export default App;
